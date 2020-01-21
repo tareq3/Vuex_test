@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-   <Todos />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |<!-- Basic routing  -->
+      <router-link  :to="{name:'about',params:{id:id}}">About</router-link> | <!-- Routing with Declerative -->
+      <router-link to="/profile/tareq">Profile</router-link>  <!-- Routing with using routing paremeter -->
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Todos from './components/Todos.vue'
-
 export default {
-  name: 'app',
-  components: {
-    Todos
-  }
+    data(){
+      return{
+        id:0
+      }
+    }
+
+
+    
 }
 </script>
 
@@ -22,6 +29,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
